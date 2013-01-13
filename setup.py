@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='jadelesscoffee-middleware',
-    version='1.0',
+    version='1.0.1',
     description='WSGI middleware class that executes the Node.js JadeLessCoffee compiler on a `src` folder in the JLC_DIRS environment variable.',
     author='Oliver Wilkerson, Matthew Wells, Jeff Andrews, Nuu Logic LLC',
     author_email='oliver.wilkerson@nuulogic.com',

@@ -1,9 +1,11 @@
 from os import path, environ
+from datetime import datetime, timedelta
 import sys
 import os
 
 class JadeLessCoffeeMiddleware(object):
     directories = None;
+    last_compile = datetime.now()
 
     def __init__(self, app, directories=None):
         self.app = app;
@@ -15,6 +17,12 @@ class JadeLessCoffeeMiddleware(object):
         print('JadeLessCoffee compiler will run at every request...\n');
 
     def __call__(self, environ, response):
+    	# if the compiler has run in the last 4 seconds, don't run it again.
+    	if datetime.now() - self.last_compile < timedelta(0, 4):
+    		return self.app(environ, response)
+        
+        self.last_compile = datetime.now()
+
         #if the JLC_DIRS is set then just do them
         if self.directories is not None:
             if isinstance(self.directories, tuple):
