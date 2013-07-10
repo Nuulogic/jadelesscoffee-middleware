@@ -11,13 +11,13 @@ jadelesscoffee-middleware is *not* meant for a production environment. **It is s
 Requirements
 ------------
 
-**JadeLessCoffee** Node.js module. (Note that this is currently in a closed alpha state until it can be a proven technique.)
+**JadeLessCoffee** Node.js module. (Note that this is currently in beta until it can be a proven technique.)
 
 
 Installation
 ------------
 
-`$ pip install git+git://github.com/Nuulogic/jadelesscoffee-middleware.git`
+`$ pip install jadelesscoffee-middleware`
 
 Where your application is created, add a line to throw in the JLC middleware:
 
@@ -35,7 +35,7 @@ define an environment variable JLC_DIRS that is a list of tuples:
 The first entry is a directory containing .jade, .less, or .coffee files. The second is the destination of the output.
 
 The following command will run at each request and will only compile files that have changed.
-`jlc --quiet --incremental --output JLC_DIRS[i][1] JLC_DIRS[i][0]`
+`jlc --quiet --incremental --python --out JLC_DIRS[i][1] JLC_DIRS[i][0]`
 
 Note
 ----
